@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title id="home">Home</title>
+  <title id="home">Formulário de Contato</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <!--<script src="scripts/script.js" defer></script>  -->
@@ -24,13 +24,13 @@
     <div>
       <!-- faça com que as duas divs a seguir sejam exibidas lado a lado quando o viewport for maior ou igual a 576px sendo que a primeira deve ocupar 3/12 e a segunda 9/12 consulte: https://getbootstrap.com.br/docs/4.1/layout/grid/ -->
 
-      <div class="row text-center">
-        <div class="col-sm-1">
+      <div class="row">
+        <div class="col-sm-3">
           <img src="imagens/logo.png" alt="Logotipo da empresa" class="logotipo">
         </div>
-        <div class="col-sm-11 titulo">
+        <div class="col-sm-9 titulo">
           <!--class="col-sm-9"-->
-          <h1>Avalidação Final</h1>
+          <h1>Toledo Carreiras</h1>
         </div>
       </div>
 
@@ -66,18 +66,79 @@
   </header>
 
   <aside id="conteudo">
-    <div class="col-sm-6 mx-auto bg-light mt-1 w-90">
+    <div class="d-none col-sm-6 mx-auto bg-light mt-1 w-90">
       <!-- oculte o header abaixo consulte https://getbootstrap.com.br/docs/4.1/utilities/display/ -->
-      <h2 id="home" class="text-center">HOME</h2>
-      <article>
-          
-
-
-      </article>
+      <h2 id="menu">Menu</h2>
     </div>
+
+    <article>
+      <div id="contatos">
+        <h2>Formulário de Contato</h2>
+        <!-- torne o formulário responsivo, conforme o exemplo consulte https://getbootstrap.com.br/docs/4.1/components/forms/ -->
+
+        <form id="formulario" name="formulario" class="needs-validation" novalidate>
+          <div class="form-group row">
+            <label id="labelnome" class="col-sm-2 col-form-label" for="inputnome">Nome*</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="inputnome" id="inputnome" aria-label="inputnome" placeholder="Digite seu nome" required autofocus>
+              <div class="invalid-feedback">
+                Campo nome obrigatório.
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label id="labelemail" class="col-sm-2 col-form-label" for="inputemail">Email*</label>
+            <div class="col-sm-10">
+              <input type="email" class="form-control" name="inputemail" id="inputemail" aria-label="inputemail" placeholder="Digite seu email" required>
+              <div class="invalid-feedback">
+                Campo e-mail obrigatório.
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label id="labelmensagem" class="col-sm-2 col-form-label" for="mensagem">Mensagem*</label>
+            <div class="col-sm-10">
+               <textarea class="form-control" name="mensagem" id="mensagem" rows="3" aria-label="mensagem" placeholder="Informe a mensagem" required></textarea>
+               <div class="invalid-feedback">
+                Campo mensagem obrigatório.
+              </div>
+              </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="col-sm-10 offset-sm-2">
+              <input class="btn btn-primary my-1" type="submit" value="Enviar" aria-label="Enviar" />
+              <p>* Campos obrigatórios</p>
+            </div>
+          </div>
+        </form>
+
+        <script>
+          // Example starter JavaScript for disabling form submissions if there are invalid fields
+          (function() {
+            'use strict';
+            window.addEventListener('load', function() {
+              // Fetch all the forms we want to apply custom Bootstrap validation styles to
+              var forms = document.getElementsByClassName('needs-validation');
+              // Loop over them and prevent submission
+              var validation = Array.prototype.filter.call(forms, function(form) {
+                form.addEventListener('submit', function(event) {
+                  if (form.checkValidity() === false) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                  }
+                  form.classList.add('was-validated');
+                }, false);
+              });
+            }, false);
+          })();
+          </script>        
+
+      </div>
+    </article>
   </aside>
 
-  <footer id="rodape" class="footer navbar-fixed-bottom text-center">
+  <footer id="rodape" class="row">
     <div class="col-12">
       <p>Copyright © 2021</p>
     </div>
