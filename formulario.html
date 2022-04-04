@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title id="formulario">Formulario</title>
+  <title id="formulario_inicial">Formulário</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
@@ -11,6 +11,7 @@
     .logotipo {
       max-width: 100px;
     }
+
     a:focus,a:hover {
       border: 1px solid #F00;
     }
@@ -36,6 +37,7 @@
             <button type="button" id="botao_menu" class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
+
             <div class="collapse navbar-collapse" id="navbarNav">
               <ul class="navbar-nav">
                 <li class="nav-item active">
@@ -63,26 +65,30 @@
     <div class="col-sm-6 mx-auto bg-light mt-1 w-90">
       <h2 id="corpo_formulario" class="text-center">Formulário de Contato</h2>
     </div>
-  </aside>
-
+  
     <div id="contatos">
+      <form id="formulario" name="formulario" class="needs-validation" novalidate>
 
-      <form method="post">
         <div class="form-group row">
-          <label id="labelnome" class="col-sm-2 col-form-label" for="inputnome">Nome:</label>
+          <label id="labelnome" class="col-sm-2 col-form-label" for="inputnome">Nome</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" name="nome" id="nome" aria-label="inputnome"
-              placeholder="Digite seu nome" autofocus>
+            <input type="text" class="form-control" name="inputnome" id="inputnome" aria-label="inputnome" placeholder="Digite seu nome" required autofocus>
+            <div class="invalid-feedback">
+              Campo NOME obrigatório.
+            </div>
           </div>
         </div>
-        
+
         <div class="form-group row">
           <label id="labelecep" class="col-sm-2 col-form-label" for="inputcep">CEP:</label>
           <div class="col-sm-4">
-            <input type="text" class="form-control" name="cep" id="cep" aria-label="inputcep" placeholder="Digite seu CEP">
+            <input type="text" class="form-control" name="inputcep" id="inputcep" aria-label="inputcep" placeholder="Digite seu CEP" required>
+            <div class="invalid-feedback">
+              Campo CEP obrigatório.
+            </div>
           </div>
           <div class="col-sm-4">
-            <input id="btnconsultar" class="btn btn-primary my-1" type="button" value="Consultar" aria-label="Consultar" />
+            <input id="btnconsultar" class="btn btn-primary my-1" type="button" value="Consultar" aria-label="Consultar"/>
           </div>
         </div>
 
@@ -90,35 +96,69 @@
         <div class="form-group row">
           <label id="labelrua" class="col-sm-2 col-form-label" for="inputrua">Rua:</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" name="rua" id="rua" aria-label="inputrua" placeholder="Digite seu endereço">
+            <input type="text" class="form-control" name="inputrua" id="inputrua" aria-label="inputrua" placeholder="Digite seu endereço" required>
+            <div class="invalid-feedback">
+              Campo RUA obrigatório.
+            </div>
           </div>
         </div>
 
         <div class="form-group row">
-          <label id="labelemail" class="col-sm-2 col-form-label" for="inputemail">Bairro:</label>
+          <label id="labelbairro" class="col-sm-2 col-form-label" for="inputbairro">Bairro:</label>
           <div class="col-sm-5">
-            <input type="email" class="form-control" name="bairro" id="bairro" aria-label="inputemail" placeholder="Digite seu email">
+            <input type="text" class="form-control" name="inputbairro" id="inputbairro" aria-label="inputbairro" placeholder="Digite seu bairro" required>
+            <div class="invalid-feedback">
+              Campo BAIRRO obrigatório.
+            </div>
           </div>
         </div>
 
         <div class="form-group row">
-          <label id="labelemail" class="col-sm-2 col-form-label" for="inputemail">Cidade:</label>
+          <label id="labelcidade" class="col-sm-2 col-form-label" for="inputcidade">Cidade:</label>
           <div class="col-sm-6">
-            <input type="email" class="form-control" name="cidade" id="cidade" aria-label="inputemail" placeholder="Digite seu email">
+            <input type="text" class="form-control" name="inputcidade" id="inputcidade" aria-label="inputcidade" placeholder="Digite sua cidade" required>
+            <div class="invalid-feedback">
+              Campo CIDADE obrigatório.
+            </div>
           </div>
-          <label id="labelemail" class="col-sm-2 col-form-label" for="inputemail">UF:</label>
+          
+          <label id="labeluf" class="col-sm-2 col-form-label" for="inputuf">UF:</label>
           <div class="col-sm-2">
-            <input type="email" class="form-control" name="uf" id="uf" aria-label="inputemail" placeholder="Digite seu email">
+            <input type="text" class="form-control" name="inputuf" id="inputuf" aria-label="inputuf" placeholder="Digite seu UF" required>
+            <div class="invalid-feedback">
+              Campo UF obrigatório.
+            </div>
           </div>
         </div>
-        
+
+    
         <div class="form-group row">
           <div class="col-sm-10 offset-sm-2">
-            <input id="gravar" class="btn btn-success my-1" type="submit" value="Gravar" aria-label="Gravar" />
+            <input class="btn btn-success my-1" type="submit" value="Gravar" aria-label="Gravar" />
           </div>
         </div>
       </form>
-    </div>
+
+      <script>        
+        (function() {
+          'use strict';
+          window.addEventListener('load', function() {            
+            var forms = document.getElementsByClassName('needs-validation');            
+            var validation = Array.prototype.filter.call(forms, function(form) {
+              form.addEventListener('submit', function(event) {
+                if (form.checkValidity() === false) {
+                  event.preventDefault();
+                  event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+              }, false);
+            });
+          }, false);
+        })();
+        </script>        
+    
+    </div>  
+</aside>
 
   <footer id="rodape" class="footer navbar-fixed-bottom text-center">
     <div class="col-12">
